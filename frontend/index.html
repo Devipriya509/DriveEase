@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveEase | Smart Car Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <header class="header">
+    <a class="logo" href="#home"><span>🚘</span> DriveEase</a>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#cars">Cars</a>
+      <a href="#smart-match">Smart Match</a>
+      <a href="#compare">Compare</a>
+      <a href="#offers">Offers</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">🌙</button>
+      <button class="icon-btn" id="wishlistBtn" title="Wishlist">♡ <span id="wishCount">0</span></button>
+      <button class="btn btn-outline" id="loginBtn">Login</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+  <section class="accessibility-bar" aria-label="Accessibility tools">
+    <div class="accessibility-inner">
+      <strong>♿ Accessible DriveEase</strong>
+      <span>Built for visual, hearing and speech-friendly interaction</span>
+      <div class="access-actions">
+        <button id="highContrastBtn">◐ High Contrast</button>
+        <button id="fontPlusBtn">A+ Text</button>
+        <button id="voiceReadBtn">🔊 Read Page</button>
+        <button id="stopReadBtn">⏹ Stop</button>
+      </div>
+    </div>
+  </section>
+
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge">✨ SMART CAR RENTAL PLATFORM</span>
+        <h1>Rent the right car.<br><span>Drive with confidence.</span></h1>
+        <p>Find, compare and book cars with smart recommendations, transparent pricing and easy booking.</p>
+        <div class="hero-actions">
+          <a href="#cars" class="btn btn-primary">Explore Cars →</a>
+          <button class="btn btn-glass" id="heroMatchBtn">✨ Find My Perfect Car</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong>50+</strong><small>Cars</small></div>
+          <div><strong>1.2K+</strong><small>Bookings</small></div>
+          <div><strong>4.8/5</strong><small>Customer rating</small></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-car-image">
+          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=85" alt="Sports car">
+          <span class="floating-tag">⚡ Fast booking</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-panel">
+      <div class="field"><label>📍 Pickup location</label><input id="locationInput" placeholder="Chennai, Tamil Nadu"></div>
+      <div class="field"><label>📅 Pick-up date</label><input id="searchStart" type="date"></div>
+      <div class="field"><label>📅 Return date</label><input id="searchEnd" type="date"></div>
+      <div class="field"><label>🚗 Car type</label>
+        <select id="searchType">
+          <option value="all">All types</option><option value="hatchback">Hatchback</option>
+          <option value="sedan">Sedan</option><option value="suv">SUV</option><option value="luxury">Luxury</option>
+        </select>
+      </div>
+      <button class="btn btn-primary search-btn" id="searchBtn">Search Cars</button>
+    </section>
+
+    <section class="section" id="cars">
+      <div class="section-head">
+        <div><span class="eyebrow">OUR FLEET</span><h2>Choose your ride</h2><p>Browse our demo fleet and find a car that fits your trip.</p></div>
+        <div class="controls">
+          <input id="carSearch" class="small-input" placeholder="Search car...">
+          <select id="sortCars" class="small-input"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="rating">Top Rated</option></select>
+        </div>
+      </div>
+      <div class="chips" id="categoryChips">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="hatchback">Hatchback</button>
+        <button class="chip" data-cat="sedan">Sedan</button>
+        <button class="chip" data-cat="suv">SUV</button>
+        <button class="chip" data-cat="luxury">Luxury</button>
+      </div>
+      <div class="car-grid" id="carGrid"></div>
+    </section>
+
+    <section class="smart-section section" id="smart-match">
+      <div class="section-head centered"><span class="eyebrow">AI-STYLE RECOMMENDATION</span><h2>Smart Match</h2><p>Answer 4 quick questions and get cars matched to your needs.</p></div>
+      <div class="quiz-card">
+        <div class="quiz-step"><span>01</span><label>What is your trip?</label>
+          <div class="option-grid" data-group="purpose">
+            <button data-value="city">🏙️ City</button><button data-value="family">👨‍👩‍👧 Family</button>
+            <button data-value="business">💼 Business</button><button data-value="adventure">🏔️ Adventure</button>
+          </div>
+        </div>
+        <div class="quiz-step"><span>02</span><label>Daily budget?</label>
+          <div class="option-grid" data-group="budget"><button data-value="low">₹1,000–₹2,000</button><button data-value="mid">₹2,000–₹4,000</button><button data-value="high">₹4,000+</button></div>
+        </div>
+        <div class="quiz-step"><span>03</span><label>Seats needed?</label>
+          <div class="option-grid" data-group="seats"><button data-value="4">4 seats</button><button data-value="5">5 seats</button><button data-value="7">7 seats</button></div>
+        </div>
+        <div class="quiz-step"><span>04</span><label>Transmission?</label>
+          <div class="option-grid" data-group="transmission"><button data-value="Automatic">Automatic</button><button data-value="Manual">Manual</button><button data-value="Any">Any</button></div>
+        </div>
+        <button class="btn btn-primary full" id="matchBtn">✨ Get My Smart Matches</button>
+        <div id="matchResults" class="match-results"></div>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <div class="section-head"><div><span class="eyebrow">DECIDE FASTER</span><h2>Compare Cars</h2><p>Select up to 3 cars and compare their key details side-by-side.</p></div></div>
+      <div id="compareArea" class="compare-area empty-state">No cars selected yet. Click <b>Compare</b> on any car card.</div>
+    </section>
+
+    <section class="section calculator-section">
+      <div class="calculator">
+        <div><span class="eyebrow">SMART PRICE CALCULATOR</span><h2>Know your total before booking</h2><p>Adjust your trip and add-ons. The price updates instantly.</p></div>
+        <div class="calc-grid">
+          <div><label>Car</label><select id="calcCar"></select></div>
+          <div><label>Days</label><input id="calcDays" type="number" min="1" value="3"></div>
+          <div><label>Add-on</label><select id="calcAddon"><option value="0">None</option><option value="300">Child seat — ₹300/day</option><option value="500">Extra insurance — ₹500/day</option><option value="700">GPS + Wi-Fi — ₹700/day</option></select></div>
+          <div><label>Promo code</label><input id="promoInput" placeholder="DRIVE10"></div>
+        </div>
+        <div class="calc-total"><span>Estimated total</span><strong id="calcTotal">₹0</strong><small id="calcBreakdown"></small></div>
+      </div>
+    </section>
+
+    <section class="section availability-section">
+      <div class="section-head"><div><span class="eyebrow">LIVE-STYLE DEMO</span><h2>Availability Calendar</h2><p>Check demo availability before you book.</p></div></div>
+      <div class="availability-card">
+        <div class="calendar-top"><button id="prevMonth">‹</button><h3 id="calendarTitle"></h3><button id="nextMonth">›</button></div>
+        <div class="calendar-week"><b>Sun</b><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b></div>
+        <div id="calendarGrid" class="calendar-grid"></div>
+        <div class="legend"><span><i class="available"></i> Available</span><span><i class="busy"></i> Busy</span><span><i class="today"></i> Today</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="offers">
+      <div class="section-head"><div><span class="eyebrow">DEALS</span><h2>Offers & Rewards</h2><p>Demo promotional features for your rental platform.</p></div></div>
+      <div class="offer-grid">
+        <div class="offer"><span>🔥</span><h3>Weekend Escape</h3><p>Get 10% off selected weekend bookings.</p><button data-copy="DRIVE10" class="copy-btn">Copy DRIVE10</button></div>
+        <div class="offer"><span>🎁</span><h3>First Booking</h3><p>New users receive a welcome booking discount.</p><button data-copy="WELCOME15" class="copy-btn">Copy WELCOME15</button></div>
+        <div class="offer"><span>⭐</span><h3>Loyalty Rewards</h3><p>Earn points on every completed booking.</p><button class="copy-btn" id="rewardsBtn">View Rewards</button></div>
+      </div>
+    </section>
+
+    <section class="section dashboard-preview">
+      <div class="section-head"><div><span class="eyebrow">CUSTOMER AREA</span><h2>My Bookings</h2><p>Preview of the customer dashboard experience.</p></div><button class="btn btn-outline" id="profileBtn">Open Dashboard</button></div>
+      <div id="bookingList" class="booking-list"></div>
+    </section>
+
+    <section class="section reviews-section">
+      <div class="section-head centered"><span class="eyebrow">CUSTOMER VOICE</span><h2>What renters say</h2></div>
+      <div class="review-grid">
+        <article class="review"><div>★★★★★</div><p>“The smart matching idea makes choosing a car much easier.”</p><strong>Priya S.</strong><small>Chennai</small></article>
+        <article class="review"><div>★★★★★</div><p>“I liked seeing the estimated total before starting the booking.”</p><strong>Rahul K.</strong><small>Bengaluru</small></article>
+        <article class="review"><div>★★★★☆</div><p>“Compare and wishlist are useful features for planning a trip.”</p><strong>Meena R.</strong><small>Coimbatore</small></article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-head centered"><span class="eyebrow">HELP CENTER</span><h2>Frequently Asked Questions</h2></div>
+      <div class="faq-list">
+        <details><summary>How does Smart Match work?</summary><p>It uses your trip purpose, budget, seat requirement and transmission preference to filter suitable cars.</p></details>
+        <details><summary>Can I compare multiple cars?</summary><p>Yes. Select up to three cars and open the Compare Cars section to see them side-by-side.</p></details>
+        <details><summary>Does this frontend have a real database?</summary><p>Not yet. This version uses demo data and localStorage. MySQL and Node.js/Express can be connected next.</p></details>
+        <details><summary>Can customers cancel bookings?</summary><p>The UI is prepared for booking management. Real cancellation rules will be implemented with the backend.</p></details>
+      </div>
+    </section>
+  </main>
+
+
+    <section class="section accessibility-section" id="accessibility">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">INCLUSIVE DESIGN</span>
+          <h2>Everyone can use DriveEase</h2>
+          <p>Multiple ways to search, understand and complete a rental without depending only on voice.</p>
+        </div>
+      </div>
+      <div class="access-grid">
+        <article class="access-card"><span>💬</span><h3>Text-first interaction</h3><p>Customers can use chat, forms and visual buttons without speaking.</p></article>
+        <article class="access-card"><span>🔊</span><h3>Voice assistance</h3><p>Voice commands and read-aloud support are available for users who prefer audio.</p></article>
+        <article class="access-card"><span>👁️</span><h3>Visual alerts</h3><p>Important booking, verification and return reminders are shown as clear visual notifications.</p></article>
+        <article class="access-card"><span>⌨️</span><h3>Keyboard friendly</h3><p>Core actions use standard controls so they can be operated with a keyboard or assistive technology.</p></article>
+      </div>
+    </section>
+
+    <section class="section verification-section" id="verification">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">SECURE RENTAL VERIFICATION</span>
+          <h2>Verify before you drive</h2>
+          <p>Every rental request includes identity verification and a clear vehicle return date.</p>
+        </div>
+      </div>
+      <div class="verification-card">
+        <div class="verification-info">
+          <div class="verify-icon">🪪</div>
+          <h3>Customer identity verification</h3>
+          <p>For the demo, customers provide an Aadhaar number and upload an accepted ID proof. In a production system, this information should be encrypted and handled only through a compliant identity-verification service.</p>
+          <div class="security-points">
+            <span>✓ ID proof required</span>
+            <span>✓ Rental due date required</span>
+            <span>✓ Verification status tracked</span>
+            <span>✓ Sensitive number not saved in localStorage</span>
+          </div>
+        </div>
+        <form id="verificationForm" class="verification-form">
+          <div class="form-row">
+            <div><label for="customerName">Full name</label><input id="customerName" required placeholder="Enter your full name"></div>
+            <div><label for="customerPhone">Phone number</label><input id="customerPhone" required inputmode="tel" placeholder="+91 XXXXX XXXXX"></div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="aadhaarNumber">Aadhaar number</label>
+              <input id="aadhaarNumber" required inputmode="numeric" maxlength="12" placeholder="12-digit Aadhaar number">
+              <small>Demo only. Do not use a real Aadhaar number in this frontend.</small>
+            </div>
+            <div>
+              <label for="idProofType">ID proof type</label>
+              <select id="idProofType" required>
+                <option value="">Select proof</option>
+                <option>Driving Licence</option>
+                <option>Passport</option>
+                <option>Voter ID</option>
+                <option>PAN Card</option>
+                <option>Aadhaar Card</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div><label for="idProofFile">Upload ID proof</label><input id="idProofFile" type="file" accept=".jpg,.jpeg,.png,.pdf" required><small>Demo upload: JPG, PNG or PDF.</small></div>
+            <div><label for="rentalDueDate">Rental due / return date</label><input id="rentalDueDate" type="date" required></div>
+          </div>
+          <div class="consent-row"><input id="verifyConsent" type="checkbox" required><label for="verifyConsent">I confirm the submitted information belongs to me and can be used for rental verification.</label></div>
+          <button class="btn btn-primary full" type="submit">🔐 Submit for Verification</button>
+          <div id="verificationStatus" class="verification-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section rental-rules">
+      <div class="section-head centered">
+        <span class="eyebrow">RENTAL SAFETY</span>
+        <h2>Before your rental is confirmed</h2>
+        <p>A simple verification checklist makes the rental process clearer for customers and admins.</p>
+      </div>
+      <div class="rules-grid">
+        <div><b>01</b><h3>Choose your car</h3><p>Select the car, pickup date and return date.</p></div>
+        <div><b>02</b><h3>Verify identity</h3><p>Submit required ID information and proof for verification.</p></div>
+        <div><b>03</b><h3>Confirm rental</h3><p>After verification, the booking can move to confirmation.</p></div>
+        <div><b>04</b><h3>Return on time</h3><p>The system can notify the customer before the rental due date.</p></div>
+      </div>
+    </section>
+
+    <div class="chatbot">
+      <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open DriveEase chatbot">💬</button>
+      <div id="chatbotPanel" class="chatbot-panel">
+        <div class="chatbot-head"><div><b>DriveEase Assistant</b><small>Text support • accessible mode</small></div><button id="chatbotClose">×</button></div>
+        <div id="chatMessages" class="chat-messages" aria-live="polite">
+          <div class="bot-msg">Hi! 👋 I can help you find a car, explain booking, verification, ID proof or return dates.</div>
+        </div>
+        <div class="quick-chat">
+          <button data-chat="recommend">Recommend a car</button>
+          <button data-chat="verification">What ID is needed?</button>
+          <button data-chat="return">How does return date work?</button>
+        </div>
+        <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Type your question..." autocomplete="off"><button>➤</button></form>
+      </div>
+    </div>
+
+  <footer><div><a class="logo" href="#home"><span>🚘</span> DriveEase</a><p>Smart, simple and transparent car rental experience.</p></div><div><h4>Platform</h4><a href="#cars">Cars</a><a href="#smart-match">Smart Match</a><a href="#compare">Compare</a></div><div><h4>Support</h4><a href="#faq">FAQ</a><a href="#offers">Offers</a><a href="#home">Contact</a></div></footer>
+
+  <div class="modal" id="bookingModal"><div class="modal-box"><button class="close">×</button><div id="bookingContent"></div></div></div>
+  <div class="modal" id="authModal"><div class="modal-box small"><button class="close">×</button><div class="auth-tabs"><button class="active" data-auth="login">Login</button><button data-auth="signup">Sign Up</button></div><form id="authForm"><h2 id="authTitle">Welcome back</h2><p id="authText">Login to manage your bookings.</p><input id="authName" placeholder="Full name" class="hidden"><input type="email" placeholder="Email" required><input type="password" placeholder="Password" required><button class="btn btn-primary full">Continue</button></form></div></div>
+  <div class="modal" id="detailModal"><div class="modal-box"><button class="close">×</button><div id="detailContent"></div></div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
